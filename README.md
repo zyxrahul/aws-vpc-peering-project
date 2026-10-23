@@ -97,3 +97,26 @@ Required evidence is documented in `evidence/README.md`. Capture original screen
 
 The project will be considered complete after the peering connection, route configuration, forward and reverse connectivity tests, controlled failure and recovery tests, evidence collection, final report, and resource cleanup have been verified.
 
+## Skills Demonstrated
+
+- AWS VPC and subnet design
+- VPC Peering and private routing
+- Amazon EC2 and bastion-host architecture
+- Security groups and restricted SSH access
+- AWS CloudFormation (Infrastructure as Code)
+- Network connectivity troubleshooting
+
+## Project Status
+
+**Status:** Infrastructure deployed; connectivity verification pending.
+
+The project is being validated in AWS. Actual test results and screenshots will be added after verification.
+
+## Author
+
+**Rahul Kumar**  
+AWS Learner | B.Tech CSE Student
+
+- GitHub: https://github.com/zyxrahul
+
+

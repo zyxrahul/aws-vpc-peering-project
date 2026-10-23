@@ -1,0 +1,19 @@
+# Secrets and local credentials
+*.pem
+*.key
+.env
+.env.*
+.aws/
+credentials
+config
+
+# Local system/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Generated temporary/report build artifacts
+*.typst-diagnostics.log
+verification.json
+review/

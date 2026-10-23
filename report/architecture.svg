@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="700" viewBox="0 0 1500 700">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#263b5e"/></marker>
+  <style>
+    text{font-family:Arial,sans-serif;fill:#183153} .vpc{fill:#f8fbff;stroke:#3667a6;stroke-width:3}
+    .sub{fill:#fff;stroke:#75a1d1;stroke-width:2} .node{fill:#e6f1ff;stroke:#3269a8;stroke-width:2}
+    .route{fill:none;stroke:#263b5e;stroke-width:3;marker-end:url(#arrow)} .peer{fill:none;stroke:#15803d;stroke-width:4;marker-start:url(#arrow);marker-end:url(#arrow)}
+    .label{font-size:20px;font-weight:bold}.small{font-size:17px}.tiny{font-size:15px}
+  </style>
+</defs>
+<rect width="1500" height="700" fill="#ffffff"/>
+<!-- endpoints -->
+<rect x="45" y="35" width="220" height="72" rx="14" class="node"/><text x="155" y="79" text-anchor="middle" class="label">Student laptop</text>
+<ellipse cx="470" cy="70" rx="165" ry="43" fill="#fff7df" stroke="#d59b1d" stroke-width="2.5"/><text x="470" y="64" text-anchor="middle" class="label">Internet Gateway</text><text x="470" y="88" text-anchor="middle" class="tiny">attached to VPC A only</text>
+<!-- VPC boxes -->
+<rect x="35" y="145" width="830" height="500" rx="24" class="vpc"/><text x="65" y="184" class="label">VPC A · 10.10.0.0/16</text>
+<rect x="930" y="145" width="530" height="500" rx="24" class="vpc"/><text x="960" y="184" class="label">VPC B · 10.20.0.0/16</text>
+<!-- subnet boxes -->
+<rect x="75" y="215" width="330" height="320" rx="18" class="sub"/><text x="95" y="250" class="small">Public subnet · 10.10.1.0/24</text>
+<rect x="455" y="215" width="395" height="320" rx="18" class="sub"/><text x="475" y="250" class="small">Private subnet · 10.10.2.0/24</text>
+<rect x="980" y="250" width="430" height="285" rx="18" class="sub"/><text x="1000" y="285" class="small">Private subnet · 10.20.1.0/24</text>
+<!-- instances -->
+<rect x="125" y="330" width="230" height="115" rx="14" class="node"/><text x="240" y="368" text-anchor="middle" class="label">Bastion</text><text x="240" y="397" text-anchor="middle" class="small">10.10.1.10 + public IPv4</text><text x="240" y="423" text-anchor="middle" class="tiny">SSH entry point</text>
+<rect x="535" y="330" width="235" height="115" rx="14" class="node"/><text x="652" y="368" text-anchor="middle" class="label">App-A</text><text x="652" y="397" text-anchor="middle" class="small">10.10.2.10</text><text x="652" y="423" text-anchor="middle" class="tiny">No public IPv4</text>
+<rect x="1080" y="330" width="235" height="115" rx="14" class="node"/><text x="1197" y="368" text-anchor="middle" class="label">App-B</text><text x="1197" y="397" text-anchor="middle" class="small">10.20.1.10</text><text x="1197" y="423" text-anchor="middle" class="tiny">No public IPv4</text>
+<!-- routes -->
+<path d="M 155 107 L 155 290 L 185 330" class="route"/><text x="168" y="292" class="tiny">SSH / 22</text>
+<path d="M 470 113 L 470 195 L 325 195 L 325 330" class="route"/><text x="370" y="189" class="tiny">0.0.0.0/0 → IGW</text>
+<path d="M 355 388 L 535 388" class="route"/><text x="445" y="375" text-anchor="middle" class="tiny">Private SSH</text>
+<path d="M 770 388 L 1080 388" class="peer"/><text x="925" y="360" text-anchor="middle" class="small" font-weight="bold">VPC Peering</text><text x="925" y="421" text-anchor="middle" class="tiny">10.20.0.0/16 ↔ 10.10.0.0/16</text>
+<path d="M 300 445 L 300 570 L 1197 570 L 1197 445" class="route"/><text x="750" y="558" text-anchor="middle" class="tiny">ProxyJump SSH to App-B · Bastion public-subnet route to peering</text>
+<text x="750" y="682" text-anchor="middle" class="small" fill="#475569">Private hosts have no public IPv4. Peering provides private VPC-to-VPC traffic, not internet transit for VPC B.</text>
+</svg>

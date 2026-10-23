@@ -1,0 +1,31 @@
+flowchart TB
+    laptop[Student laptop]
+    igw((Internet Gateway · VPC A only))
+
+    subgraph VPCS["Private AWS network design"]
+      direction LR
+      subgraph A["VPC A · 10.10.0.0/16"]
+        direction TB
+        subgraph AP["Public subnet · 10.10.1.0/24"]
+          bastion["Bastion · 10.10.1.10<br/>Public IPv4 · SSH entry"]
+        end
+        subgraph APR["Private subnet · 10.10.2.0/24"]
+          appa["App-A · 10.10.2.10<br/>No public IPv4"]
+        end
+      end
+      subgraph B["VPC B · 10.20.0.0/16"]
+        direction TB
+        subgraph BP["Private subnet · 10.20.1.0/24"]
+          appb["App-B · 10.20.1.10<br/>No public IPv4"]
+        end
+      end
+    end
+
+    laptop -->|SSH/22| bastion
+    igw -->|0.0.0.0/0 route| bastion
+    bastion -->|Private SSH| appa
+    appa <-->|VPC peering · routes both ways| appb
+    bastion -->|ProxyJump via peering route| appb
+
+    note["VPC B has no Internet Gateway.<br/>Peering is private reachability, not internet transit."]
+    VPCS -.-> note

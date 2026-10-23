@@ -1,19 +1,29 @@
-# Student project information
+# Student Project Information
 
-- Student name: **[fill in]**
-- Batch / class: **[fill in]**
-- Project title: **AWS VPC Peering — Private Connectivity Between Two VPCs**
-- AWS Region used: **[fill in actual Region]**
-- Completion date: **[fill in after completing AWS tests]**
-- GitHub repository URL: **[fill in after uploading to your GitHub account]**
+- **Student name:** Rahul Kumar
+- **Batch / class:** AWS
+- **Project title:** AWS VPC Peering — Private Connectivity Between Two VPCs
+- **AWS Region used:** Asia Pacific (Sydney) — `ap-southeast-2`
+- **Completion date:** `24-10-2026`
+- **GitHub repository URL:** Pending — add your repository URL after uploading
 
-## AWS resource IDs
+## AWS Resource IDs
 
-- VPC A ID: **[fill in from AWS]**
-- VPC B ID: **[fill in from AWS]**
-- Peering connection ID and status: **[fill in from AWS]**
-- Bastion instance ID / public IPv4: **[fill in from AWS]**
-- App-A instance ID / private IPv4: **[fill in from AWS]**
-- App-B instance ID / private IPv4: **[fill in from AWS]**
+- **VPC A ID:** `vpc-08d5228a56eb0a849`
+- **VPC B ID:** `vpc-0224bdbe81ba1233a`
+- **Peering connection ID and status:**  `................`
+- **Bastion instance ID / public IPv4:** `i-0fd9ef6d35d04a962` / `3.27.158.236`
+- **App-A instance ID / private IPv4:** `i-09729698ff15a83af` / `10.10.2.10`
+- **App-B instance ID / private IPv4:** `i-05503cc6610e934e8` / `10.20.1.10`
 
-Do not put private keys, passwords, AWS access keys, or access tokens in this file or repository.
+## Security Note
+
+Do not commit private keys, passwords, AWS access keys, secret access keys, or access tokens to this repository.
+
+## Project Verification Status
+
+- CloudFormation stack: `CREATE_COMPLETE`
+- Bastion instance: `Running` 
+- VPC peering connectivity: `verified`
+- Final project completion: `successful connectivity tests`
+
